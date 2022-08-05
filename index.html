@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>elves</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="./elves.js"></script>
+    <script>
+        let opt = {
+            drag: true, //是否可拖动 true/false, 默认true
+            showChat: true, //是否显示对话框 true/false, 默认true
+            themeUrl: "./elves.less", //自定义主题less文件链接 使用themeUrl下面的color会失效
+            color: "brown", //默认棕色
+            size: "auto", //默认跟随网页加载时屏幕大小，调整宠物大小，默认自动
+            //菜单内容配置
+            menu: {
+                $title: "你想做什么呢？", // 展开菜单时，陈述的文字
+                关于小精灵: function () {
+                    window.open("https://www.npmjs.com/package/pet2");
+                },
+                多久没洗澡:
+                    "(╯﹏╰）我已经有 " +
+                    Math.floor((+new Date() - 1456998485780) / (1000 * 60 * 60 * 24)) +
+                    "天没洗澡了~",
+                拍打喂食: {
+                    $title: "要来点什么呢？",
+                    小饼干: "嗷呜~ 多谢款待  >ω<",
+                    胡萝卜: "人家又不是小兔子 QwQ",
+                },
+                说出一段话: "balabalabalabalabala......",
+                说出一段话2: function () {
+                    elves.sayWords("我是聊天内容2");
+                },
+                //无线层级对话菜单
+                第二级: {
+                    $title: "我是第二级进入标题",
+                    第二级功能: function () {
+                        alert("我是第二级");
+                    },
+                    第三级: {
+                        $title: "我是第三级进入标题",
+                        第四级: {
+                            $title: "我是第四级进入标题",
+                            第五级: "我是第五级内容",
+                        },
+                    },
+                },
+                帮它洗澡: {
+                    蓝色: function () {
+                        elves.changeColor("blue");
+                    },
+                    绿色: function () {
+                        elves.changeColor("green");
+                    },
+                    黄色: function () {
+                        elves.changeColor("yellow");
+                    },
+                    红色: function () {
+                        elves.changeColor("red");
+                    },
+                    粉红: function () {
+                        elves.changeColor("pink");
+                    },
+                    紫色: function () {
+                        elves.changeColor("violet");
+                    },
+                    黑色: function () {
+                        elves.changeColor("black");
+                    },
+                    棕色: function () {
+                        elves.changeColor("brown");
+                    },
+                },
+                改变大小: {
+                    超大: function () {
+                        elves.changeSize("large");
+                    },
+                    大: function () {
+                        elves.changeSize("big");
+                    },
+                    正常: function () {
+                        elves.changeSize("small");
+                    },
+                    小: function () {
+                        elves.changeSize("mini");
+                    },
+                },
+                隐藏小精灵: function () {
+                    elves.hide();
+                },
+            },
+            //未使用菜单时随机聊天内容
+            words: [
+                "我们一起聊天吧 ヽ(✿ﾟ▽ﾟ)ノ",
+                "咦你想说什么 oAo ?",
+                "o(╯□╰)o主人你今天是不是忘记吃药了！",
+                "你走，我没有你这么蠢的主人╮(╯▽╰)╭",
+                "不要调戏我，我生气超凶的٩(๑`^´๑)۶",
+                "看什么看，没见过这么可爱的的小精灵吗？(o°ω°o)",
+                "咕~~(╯﹏╰)b，铲屎的，我已经很久没洗澡了，你看着办！",
+            ],
+        };
+        elves.init(opt);
+    </script>
+</body>
+
+</html>
