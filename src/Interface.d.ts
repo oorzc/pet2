@@ -28,6 +28,18 @@ export interface IOpt {
      */
     showChat?: boolean;
     /**
+     * 隐藏时的对话
+     * @type {string}
+     * @memberof IOpt
+     */
+    hideText?: string;
+    /**
+     * 显示时的对话
+     * @type {string}
+     * @memberof IOpt
+     */
+    showText?: string;
+    /**
      * 主题颜色
      * @type {string}
      * @memberof IOpt
@@ -80,8 +92,8 @@ export interface IMenuItem {
      * Function  - 执行回调方法
      * ImenuItem - 子菜单
      *
-     * @type {string|Function|IMenuItem}
+     * @type {number|array|string|Function|IMenuItem}
      * @memberof IMenuItem
      */
-    [prop: string]: string | Function | IMenuItem;
+    [prop: string]: Array<any> | number | string | Function | IMenuItem;
 }

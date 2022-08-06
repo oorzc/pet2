@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 <head>
-    <title>elves</title>
+    <title>pet</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport"
@@ -20,38 +20,39 @@
 
 <body>
     <div id="root"></div>
-    <script src="./elves.js"></script>
+    <script src="./pet.js"></script>
     <script>
-        let opt = {
-            drag: true, //是否可拖动 true/false, 默认true
-            showChat: true, //是否显示对话框 true/false, 默认true
-            themeUrl: "./elves.less", //自定义主题less文件链接 使用themeUrl下面的color会失效
-            color: "brown", //默认棕色
-            size: "auto", //默认跟随网页加载时屏幕大小，调整宠物大小，默认自动
-            //菜单内容配置
+        var opt = {
+            drag: true,
+            showChat: true,
+            themeUrl: "./pet.less", //自定义主题less文件链接 使用themeUrl下面的color会失效
+            color: "brown",
+            size: "auto",
             menu: {
-                $title: "你想做什么呢？", // 展开菜单时，陈述的文字
-                关于小精灵: function () {
+                $title: '你想做什么呢？',
+                '关于小精灵': function () {
                     window.open("https://www.npmjs.com/package/pet2");
                 },
-                多久没洗澡:
-                    "(╯﹏╰）我已经有 " +
-                    Math.floor((+new Date() - 1456998485780) / (1000 * 60 * 60 * 24)) +
-                    "天没洗澡了~",
-                拍打喂食: {
-                    $title: "要来点什么呢？",
-                    小饼干: "嗷呜~ 多谢款待  >ω<",
-                    胡萝卜: "人家又不是小兔子 QwQ",
+                '多久没洗澡': '(╯﹏╰）我已经有 ' + Math.floor((+new Date - 1456998485780) / (1000 * 60 * 60 * 24)) + '天没洗澡了~',
+                '拍打喂食': {
+                    $title: '要来点什么呢？',
+                    '小饼干': '嗷呜~ 多谢款待  >ω<',
+                    '胡萝卜': '人家又不是小兔子 QwQ'
                 },
+                唤起输入框: ["你想知道什么呢？", (val, done) => {
+                    // val, 输入值
+                    // done 关闭对话框函数
+                    pet.sayWords(val);
+                    done()
+                }],
                 说出一段话: "balabalabalabalabala......",
                 说出一段话2: function () {
-                    elves.sayWords("我是聊天内容2");
+                    pet.sayWords("我是聊天内容2");
                 },
-                //无线层级对话菜单
-                第二级: {
+                无线级菜单: {
                     $title: "我是第二级进入标题",
                     第二级功能: function () {
-                        alert("我是第二级");
+                        alert("我是第二级")
                     },
                     第三级: {
                         $title: "我是第三级进入标题",
@@ -61,51 +62,71 @@
                         },
                     },
                 },
-                帮它洗澡: {
-                    蓝色: function () {
-                        elves.changeColor("blue");
+                "帮它洗澡": {
+                    $title: "洗啊洗啊洗澡澡",
+                    "蓝色": function () {
+                        pet.changeColor("blue");
                     },
-                    绿色: function () {
-                        elves.changeColor("green");
+                    "绿色": function () {
+                        pet.changeColor("green");
                     },
-                    黄色: function () {
-                        elves.changeColor("yellow");
+                    "黄色": function () {
+                        pet.changeColor("yellow");
                     },
-                    红色: function () {
-                        elves.changeColor("red");
+                    "红色": function () {
+                        pet.changeColor("red");
                     },
-                    粉红: function () {
-                        elves.changeColor("pink");
+                    "粉红": function () {
+                        pet.changeColor("pink");
                     },
-                    紫色: function () {
-                        elves.changeColor("violet");
+                    "紫色": function () {
+                        pet.changeColor("purple");
                     },
-                    黑色: function () {
-                        elves.changeColor("black");
+                    "黑色": function () {
+                        pet.changeColor("black");
                     },
-                    棕色: function () {
-                        elves.changeColor("brown");
+                    "棕色": function () {
+                        pet.changeColor("brown");
+                    }
+                },
+                "改变大小": {
+                    $title: "变变变",
+                    "超大": function () {
+                        pet.changeSize("large");
+                    },
+                    "大": function () {
+                        pet.changeSize("big");
+                    },
+                    "正常": function () {
+                        pet.changeSize("small");
+                    },
+                    "小": function () {
+                        pet.changeSize("mini");
                     },
                 },
-                改变大小: {
-                    超大: function () {
-                        elves.changeSize("large");
+                "还原设置": {
+                    $title: "你想还原哪项设置？",
+                    所有: function () {
+                        pet.clearAll();
+                        pet.sayWords("操作成功");
                     },
-                    大: function () {
-                        elves.changeSize("big");
+                    大小: function () {
+                        pet.clearAll("size");
+                        pet.sayWords("操作成功");
                     },
-                    正常: function () {
-                        elves.changeSize("small");
+                    颜色: function () {
+                        pet.clearAll("color");
+                        pet.sayWords("操作成功");
                     },
-                    小: function () {
-                        elves.changeSize("mini");
+                    位置: function () {
+                        pet.clearAll("pos");
+                        pet.sayWords("操作成功");
                     },
                 },
-                隐藏小精灵: function () {
-                    elves.hide();
+                '隐藏小精灵': function () {
+                    pet.hide();
                 },
             },
-            //未使用菜单时随机聊天内容
             words: [
                 "我们一起聊天吧 ヽ(✿ﾟ▽ﾟ)ノ",
                 "咦你想说什么 oAo ?",
@@ -114,9 +135,9 @@
                 "不要调戏我，我生气超凶的٩(๑`^´๑)۶",
                 "看什么看，没见过这么可爱的的小精灵吗？(o°ω°o)",
                 "咕~~(╯﹏╰)b，铲屎的，我已经很久没洗澡了，你看着办！",
-            ],
+            ]
         };
-        elves.init(opt);
+        pet.init(opt);
     </script>
 </body>
 
