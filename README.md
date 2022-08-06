@@ -15,7 +15,7 @@
 
 1. npm方式
 
-   npm install pet
+npm install pet2
 
 ```js
 import pet from "pet2";
@@ -213,3 +213,7 @@ menu 是菜单，其中：
 ## 高级用法
 
 可以接入第三方接口，配合sayWords使用，变成智能机器人
+
+## 赞助打赏
+
+![](https://cdn.jsdelivr.net/gh/oorzc/public_img@main/img/2022/08/06/20220806213615.jpeg)
