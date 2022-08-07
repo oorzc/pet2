@@ -88,6 +88,7 @@ export declare class pet {
      * @memberof pet
      */
     private readonly eleNodeMenu;
+    private readonly eleFace;
     /**
      * 身体容器
      *

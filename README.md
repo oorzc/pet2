@@ -214,6 +214,10 @@ menu 是菜单，其中：
 
 可以接入第三方接口，配合sayWords使用，变成智能机器人
 
+## vuepress插件
+
+https://www.npmjs.com/package/vuepress-plugin-pet
+
 ## 赞助打赏
 
 ![](https://cdn.jsdelivr.net/gh/oorzc/public_img@main/img/2022/08/06/20220806213615.jpeg)

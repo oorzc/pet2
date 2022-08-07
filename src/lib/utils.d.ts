@@ -4,7 +4,11 @@
  * @param {any} sender 要确定类型的参数
  * @returns {string}
  */
-export declare function getType(sender: any): any;
+export declare function getType(sender: string | number | Function | any[]): any;
+/**
+ * 对象深拷贝
+ */
+export declare function deepClone(data: any): any;
 /**
  * 函数防抖
  *
@@ -13,7 +17,9 @@ export declare function getType(sender: any): any;
  * @param {number} [delay=0]
  * @returns
  */
-export declare function debounce(fn: any, delay?: number): (...args: any[]) => void;
+export declare function debounce(fn: {
+    apply: (arg0: any, arg1: any[]) => void;
+}, delay?: number): (...args: any[]) => void;
 /**
  * 使元素可拖动
  *
@@ -21,14 +27,24 @@ export declare function debounce(fn: any, delay?: number): (...args: any[]) => v
  * @param {HTMLElement} dragNode 被拖动的目标元素
  * @param {function} callback
  */
-export declare function drag(targetNode: any, dragNode: any, callback: any): void;
+export declare function drag(targetNode: HTMLElement, dragNode: HTMLElement, callback: {
+    (res: any): void;
+    (res: any): void;
+    (arg0: {
+        x: number;
+        y: number;
+    }): any;
+}): void;
 /**
  * 遍历(伪)数组，或对象
  *
  * @param {any} sender
  * @param {function} callback
  */
-export declare function each(sender: any, callback: any): void;
+export declare function each(sender: any[], callback: {
+    (key: any, val: any): boolean;
+    call?: any;
+}): void;
 /**
  * 检测是否属于(伪)数组
  *
@@ -44,3 +60,7 @@ export declare function arrayLike(sender: any): boolean;
  * @returns
  */
 export declare function randomInt(maxNum: number): number;
+/**
+ * 判断是否为空
+ */
+export declare function isEmpty(val: any): boolean;
