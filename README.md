@@ -150,8 +150,6 @@ pet.init(opt);
 
 ## 文档
 
-调用 init 方法初始化。 chuncai.init(opt:IOpt)
-
 words 是一个数组: Array，存放闲暇时候说的话。
 menu 是菜单，其中：
 1. array 表示唤起输入框,array[0]表示要说的话，array[1]回调函数（有两个参数val、done，val表示输入框值，调用done()可关闭输入框）
