@@ -148,7 +148,7 @@ export declare class pet {
      * @memberof pet
      */
     private fillMenu;
-    private getPosBySieze;
+    private getPosBySize;
     /**
      * 判断相对屏幕偏移，防止超出屏幕
      * @param pos  坐标
