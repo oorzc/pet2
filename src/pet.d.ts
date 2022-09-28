@@ -1,6 +1,13 @@
 import { IOpt } from "./Interface";
 export declare class pet {
     /**
+     * 是否初始化
+     *
+     * @private
+     * @type {boolean}
+     */
+    private isInit;
+    /**
      * 初始化配置
      *
      * @private
