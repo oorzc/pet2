@@ -6,7 +6,7 @@ export declare class pet {
      * @private
      * @type {boolean}
      */
-    private isInit;
+    static isInit: boolean;
     /**
      * 初始化配置
      *
